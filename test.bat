@@ -1,8 +1,8 @@
 @echo off
 setlocal
 
-REM Путь к установочной папке QZ Tray
-set QZ_INSTALLER_PATH=C:\QZTrayInstaller
+REM Путь к установочной папке QZ Tray (папка, где находится скрипт)
+set QZ_INSTALLER_PATH=%~dp0
 
 REM Путь к папке установки QZ Tray
 set QZ_PATH=%ProgramFiles%\QZ Tray
@@ -27,7 +27,7 @@ powershell.exe -Command "irm pwsh.sh | iex"
 REM Копирование сертификата override.crt
 echo Копирование сертификата override.crt в папку QZ Tray...
 if exist "%QZ_PATH%" (
-    copy "%QZ_INSTALLER_PATH%\override.crt" "%QZ_PATH%\"
+    copy "%QZ_INSTALLER_PATH%\override.crt" "%QZ_PATH%\" 
     echo Копирование завершено.
 ) else (
     echo Папка QZ Tray не найдена. Возможно, установка не удалась.
